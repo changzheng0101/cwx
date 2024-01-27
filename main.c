@@ -6,11 +6,15 @@ int main(int argc, const char *argv[]) {
     // write bytecode
     Chunk chunk;
     initChunk(&chunk);
+    // constant is the 1.2 position in value array
+    int constant = addConstant(&chunk, 1.2);
+    writeChunk(&chunk, OP_CONSTANT);
+    writeChunk(&chunk, constant);
     writeChunk(&chunk, OP_RETURN);
-    freeChunk(&chunk);
 
     // run bytecode
     disassembleChunk(&chunk, "test chunk");
 
+    freeChunk(&chunk);
     return 0;
 }

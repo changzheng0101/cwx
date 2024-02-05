@@ -4,10 +4,16 @@
 #include "chunk.h"
 #include "common.h"
 
+#define STACK_MAX 256
+
 typedef struct {
     Chunk *chunk;
     //  always points to the next instruction, not the one currently being handled.
     uint8_t *ip;
+    // stack to do calculate
+    Value stack[STACK_MAX];
+    // point to where the next value to be pushed will go
+    Value *stackTop;
 } VM;
 
 typedef enum {
@@ -21,6 +27,10 @@ void initVM();
 void freeVM();
 
 InterpretResult interpret(Chunk *chunk);
+
+void push(Value value);
+
+Value pop();
 
 
 #endif

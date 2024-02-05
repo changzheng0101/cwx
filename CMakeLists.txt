@@ -5,4 +5,6 @@ set(CMAKE_C_STANDARD 99)
 
 add_executable(demo main.c chunk.c debug.c memory.c
         value.h
-        value.c)
+        value.c
+        vm.h
+        vm.c)

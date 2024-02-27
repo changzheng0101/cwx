@@ -6,6 +6,8 @@
 
 #define STACK_MAX 256
 
+// this is use for run byte code
+
 typedef struct {
     Chunk *chunk;
     //  always points to the next instruction, not the one currently being handled.
@@ -26,7 +28,7 @@ void initVM();
 
 void freeVM();
 
-InterpretResult interpret(Chunk *chunk);
+InterpretResult interpret(const char *source);
 
 void push(Value value);
 

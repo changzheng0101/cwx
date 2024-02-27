@@ -7,4 +7,8 @@ add_executable(demo main.c chunk.c debug.c memory.c
         value.h
         value.c
         vm.h
-        vm.c)
+        vm.c
+        compiler.h
+        compiler.c
+        scanner.h
+        scanner.c)

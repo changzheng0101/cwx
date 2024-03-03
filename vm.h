@@ -10,7 +10,7 @@
 
 typedef struct {
     Chunk *chunk;
-    //  always points to the next instruction, not the one currently being handled.
+    // always points to the next instruction, not the one currently being handled.
     uint8_t *ip;
     // stack to do calculate
     Value stack[STACK_MAX];

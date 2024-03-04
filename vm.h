@@ -3,6 +3,7 @@
 
 #include "chunk.h"
 #include "common.h"
+#include "table.h"
 
 #define STACK_MAX 256
 
@@ -15,6 +16,7 @@ typedef struct {
     Value stack[STACK_MAX];
     // point to where the next value to be pushed will go
     Value *stackTop;
+    Table strings;
     // objects linked list node
     Obj *objects;
 } VM;

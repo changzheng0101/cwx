@@ -11,4 +11,6 @@ add_executable(demo main.c chunk.c debug.c memory.c
         compiler.h
         compiler.c
         scanner.h
-        scanner.c)
+        scanner.c
+        object.h
+        object.c)

@@ -6,8 +6,7 @@
 
 #define STACK_MAX 256
 
-// this is use for run byte code
-
+// this is use for run byte code, input chunk ,push data to stack and run
 typedef struct {
     Chunk *chunk;
     // always points to the next instruction, not the one currently being handled.
@@ -16,6 +15,8 @@ typedef struct {
     Value stack[STACK_MAX];
     // point to where the next value to be pushed will go
     Value *stackTop;
+    // objects linked list node
+    Obj *objects;
 } VM;
 
 typedef enum {
@@ -23,6 +24,8 @@ typedef enum {
     INTERPRET_COMPILE_ERROR,
     INTERPRET_RUNTIME_ERROR
 } InterpretResult;
+
+extern VM vm;
 
 void initVM();
 

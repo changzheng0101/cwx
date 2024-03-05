@@ -16,6 +16,7 @@ typedef struct {
     Value stack[STACK_MAX];
     // point to where the next value to be pushed will go
     Value *stackTop;
+    Table globals;
     Table strings;
     // objects linked list node
     Obj *objects;

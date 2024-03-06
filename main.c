@@ -1,7 +1,6 @@
 #include "common.h"
-#include "chunk.h"
-#include "debug.h"
 #include "vm.h"
+
 
 //Read-Eval-Print Loop，即"读取-求值-输出循环"。它是一种交互式编程环境
 static void repl() {
@@ -38,11 +37,12 @@ static char *readFile(const char *path) {
         exit(74);
     }
     size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
-    buffer[bytesRead] = '\0';
     if (bytesRead < fileSize) {
         fprintf(stderr, "Could not read file \"%s\".\n", path);
         exit(74);
     }
+
+    buffer[bytesRead] = '\0';
 
     fclose(file);
     return buffer;

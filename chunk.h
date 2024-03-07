@@ -28,6 +28,7 @@ typedef enum {
     OP_MULTIPLY,
     OP_DIVIDE,
     OP_NOT,
+    OP_BACK,
     OP_RETURN,
 } OpCode;
 

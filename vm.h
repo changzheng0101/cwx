@@ -4,14 +4,24 @@
 #include "chunk.h"
 #include "common.h"
 #include "table.h"
+#include "object.h"
 
-#define STACK_MAX 256
+#define UINT8_COUNT (UINT8_MAX + 1)
+#define FRAMES_MAX 64
+#define STACK_MAX (FRAMES_MAX * UINT8_COUNT)
+
+// A CallFrame represents a single ongoing function call
+typedef struct {
+    ObjFunction *function;
+    // return address
+    uint8_t *ip;
+    Value *slots;
+} CallFrame;
 
 // this is use for run byte code, input chunk ,push data to stack and run
 typedef struct {
-    Chunk *chunk;
-    // always points to the next instruction, not the one currently being handled.
-    uint8_t *ip;
+    CallFrame frames[FRAMES_MAX];
+    int frameCount;
     // stack to do calculate
     Value stack[STACK_MAX];
     // point to where the next value to be pushed will go

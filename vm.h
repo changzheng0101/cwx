@@ -13,8 +13,9 @@
 // A CallFrame represents a single ongoing function call
 typedef struct {
     ObjFunction *function;
-    // return address
+    // point to run code
     uint8_t *ip;
+    // point to vm first stack that this function can use (return address)
     Value *slots;
 } CallFrame;
 

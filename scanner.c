@@ -66,7 +66,7 @@ static char peekNext() {
     return scanner.current[1];
 }
 
-static void skipWhitespace() {
+static void skipWhitespaceAndComment() {
     for (;;) {
         char c = peek();
         switch (c) {
@@ -83,12 +83,13 @@ static void skipWhitespace() {
                 if (peekNext() == '/') {
                     // A comment goes until the end of the line.
                     while (peek() != '\n' && !isAtEnd()) advance();
+                    // consume '\n'
                     scanner.line++;
                     advance();
-                    return;
                 } else {
                     return;
                 }
+                break;
             default:
                 return;
         }
@@ -203,7 +204,7 @@ static bool match(char expected) {
 }
 
 Token scanToken() {
-    skipWhitespace();
+    skipWhitespaceAndComment();
     scanner.start = scanner.current;
 
     if (isAtEnd()) return makeToken(TOKEN_EOF);

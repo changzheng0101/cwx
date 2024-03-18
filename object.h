@@ -29,6 +29,7 @@ typedef enum {
 // Struct Inheritance : Obj* and ObjString* can convert to each other
 struct Obj {
     ObjType type;
+    bool isMarked;
     struct Obj *next;
 };
 

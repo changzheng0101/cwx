@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include "value.h"
+#include "vm.h"
 
 // each instruction has a one-byte operation code
 typedef enum {

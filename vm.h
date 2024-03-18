@@ -10,9 +10,9 @@
 #define FRAMES_MAX 64
 #define STACK_MAX (FRAMES_MAX * UINT8_COUNT)
 
-// A CallFrame represents a single ongoing function call
+// A CallFrame represents a single ongoing function call(with own local variables)
 typedef struct {
-    ObjFunction *function;
+    ObjClosure *closure;
     // point to run code
     uint8_t *ip;
     // point to vm first stack that this function can use (return address)
@@ -29,6 +29,7 @@ typedef struct {
     Value *stackTop;
     Table globals;
     Table strings;
+    ObjUpvalue* openUpvalues;
     // objects linked list node
     Obj *objects;
 } VM;

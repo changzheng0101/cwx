@@ -109,6 +109,13 @@ ObjUpvalue *newUpvalue(Value *slot) {
     return upvalue;
 }
 
+ObjInstance *newInstance(ObjClass *klass) {
+    ObjInstance *instance = ALLOCATE_OBJ(ObjInstance, OBJ_INSTANCE);
+    instance->klass = klass;
+    initTable(&instance->fields);
+    return instance;
+}
+
 static void printFunction(ObjFunction *function) {
     if (function->name == NULL) {
         printf("<script>");
@@ -136,6 +143,10 @@ void printObject(Value value) {
             break;
         case OBJ_NATIVE:
             printf("<native fn>");
+            break;
+        case OBJ_INSTANCE:
+            printf("%s instance",
+                   AS_INSTANCE(value)->klass->name->chars);
             break;
     }
 }

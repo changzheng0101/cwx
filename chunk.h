@@ -3,7 +3,6 @@
 
 #include "common.h"
 #include "value.h"
-#include "vm.h"
 
 // each instruction has a one-byte operation code
 typedef enum {
@@ -36,6 +35,7 @@ typedef enum {
     OP_CLOSURE,
     OP_CLOSE_UPVALUE,
     OP_RETURN,
+    OP_CLASS,
 } OpCode;
 
 // “chunk” to refer to sequences of bytecode

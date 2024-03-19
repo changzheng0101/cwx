@@ -75,6 +75,11 @@ static void blackenObject(Obj *object) {
 #endif
     // if an object isMarked filed is set and not in gray stack,it's black
     switch (object->type) {
+        case OBJ_CLASS: {
+            ObjClass *klass = (ObjClass *) object;
+            markObject((Obj *) klass->name);
+            break;
+        }
         case OBJ_CLOSURE: {
             ObjClosure *closure = (ObjClosure *) object;
             markObject((Obj *) closure->function);
@@ -103,6 +108,10 @@ static void freeObject(Obj *object) {
     printf("%p free type %d\n", (void *) object, object->type);
 #endif
     switch (object->type) {
+        case OBJ_CLASS: {
+            FREE(ObjClass, object);
+            break;
+        }
         case OBJ_FUNCTION: {
             ObjFunction *function = (ObjFunction *) object;
             freeChunk(&function->chunk);

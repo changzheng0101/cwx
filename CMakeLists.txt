@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.27)
-project(demo C)
+project(cwx C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(demo main.c chunk.c debug.c memory.c
+add_executable(cwx main.c chunk.c debug.c memory.c
         value.h
         value.c
         vm.h

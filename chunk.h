@@ -34,6 +34,7 @@ typedef enum {
     OP_NOT,
     OP_BACK,
     OP_CALL,
+    OP_INVOKE,
     OP_CLOSURE,
     OP_CLOSE_UPVALUE,
     OP_RETURN,

@@ -29,6 +29,7 @@ typedef struct {
     Value *stackTop;
     Table globals;
     Table strings;
+    ObjString *initString;
     ObjUpvalue *openUpvalues;
     // total bytes managed by VM
     size_t bytesAllocated;

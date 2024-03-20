@@ -183,6 +183,8 @@ static void markRoots() {
     markTable(&vm.globals);
     // gc can not free data use in compile stage
     markCompilerRoots();
+    // the "init" string in VM
+    markObject((Obj *) vm.initString);
 }
 
 static void traceReferences() {
